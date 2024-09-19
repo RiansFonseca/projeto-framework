@@ -1,8 +1,8 @@
 package factory;
 
+import builders.JogoBuilder;
 import director.JogoDirector;
 import model.Jogo;
-import model.JogoBuilder;
 
 // Factory Method
 public abstract class JogoFactory {

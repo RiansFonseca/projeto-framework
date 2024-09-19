@@ -1,7 +1,7 @@
 package factory;
 
-import model.JogoBuilder;
-import model.JogoDamasBuilder;
+import builders.JogoBuilder;
+import builders.JogoDamasBuilder;
 
 // Fábrica concreta para Jogo de Damas
 public class JogoDamasFactory extends JogoFactory {

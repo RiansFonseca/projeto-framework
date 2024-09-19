@@ -1,4 +1,6 @@
-package model;
+package builders;
+
+import model.Jogo;
 
 // Builder
 public interface JogoBuilder {

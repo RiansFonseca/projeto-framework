@@ -3,18 +3,25 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-// Produto
+// Jogo
 public class Jogo {
     private List<Peca> pecas = new ArrayList<>();
-    private String tabuleiro;
+    private Casa[][] tabuleiro; // Matriz de casas
     private String regras;
 
     public void setPecas(List<Peca> pecas) { this.pecas = pecas; }
-    public void setTabuleiro(String tabuleiro) { this.tabuleiro = tabuleiro; }
     public void setRegras(String regras) { this.regras = regras; }
 
     @Override
     public String toString() {
-        return "Jogo [pecas=" + pecas + ", tabuleiro=" + tabuleiro + ", regras=" + regras + "]";
+        return "Jogo [pecas=" + pecas + ", regras=" + regras + "]";
+    }
+
+    public Casa[][] getTabuleiro() {
+        return tabuleiro;
+    }
+
+    public void setTabuleiro(Casa[][] tabuleiro) {
+        this.tabuleiro = tabuleiro;
     }
 }

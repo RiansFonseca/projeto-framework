@@ -1,7 +1,7 @@
 package director;
 
+import builders.JogoBuilder;
 import model.Jogo;
-import model.JogoBuilder;
 
 // Director
 public class JogoDirector {

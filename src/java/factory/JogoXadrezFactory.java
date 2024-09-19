@@ -1,7 +1,7 @@
 package factory;
 
-import model.JogoBuilder;
-import model.JogoXadrezBuilder;
+import builders.JogoBuilder;
+import builders.JogoXadrezBuilder;
 
 // Fábrica concreta para Jogo de Xadrez
 public class JogoXadrezFactory extends JogoFactory {
