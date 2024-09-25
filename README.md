@@ -15,16 +15,22 @@ A estrutura do padrão Decorator é composta pelos seguintes elementos:
 
 ## Exemplo em Código
 
-```java
+- **Classe PecaDecorator**
+@import "src\java\decorators\PecaDecorator.java"
+- **Classe AdornosVermelhosDecorator**
+@import "src\java\decorators\AdornosVermelhosDecorator.java"
+- **Classe MovimentoComBrilhoVerdeDecorator**
+@import "src\java\decorators\MovimentoComBrilhoVerdeDecorator.java"
+- **Classe JogoXadrezBuilder**
+@import "src\java\builders\JogoXadrezBuilder.java"
 
-```
+
 ## Participantes
 - **Peca**: Representa a peça do jogo.
 - **PecaDecorator**: Classe base para todos os decoradores de peças.
 - **AdornosVermelhosDecorator**: Decorador que adiciona adornos vermelhos à peça.
-- **BrilhoVerdeDecorator**: Decorador que adiciona um efeito de brilho verde à peça.
+- **MovimentoComBrilhoVerdeDecorator**: Decorador que adiciona um efeito de brilho verde à peça.
 - **JogoXadrezBuilder**: Builder que utiliza os decoradores para criar um jogo de xadrez.
-
 
 
 
