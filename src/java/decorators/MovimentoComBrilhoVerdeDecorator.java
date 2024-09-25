@@ -11,6 +11,6 @@ public class MovimentoComBrilhoVerdeDecorator extends PecaDecorator {
 
     @Override
     public String toString() {
-        return super.toString() + " com brilho verde";
+        return super.toString() + " com brilho verde no movimento";
     }
 }

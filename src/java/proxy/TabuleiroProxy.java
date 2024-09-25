@@ -2,7 +2,8 @@ package proxy;
 
 import model.Casa;
 
-public class TabuleiroProxy {
+// TabuleiroProxy.java
+public class TabuleiroProxy implements Tabuleiro {
     private TabuleiroReal tabuleiroReal;
     private Casa[][] tabuleiro;
 
@@ -11,24 +12,44 @@ public class TabuleiroProxy {
         this.tabuleiroReal = new TabuleiroReal(tabuleiro);
     }
 
+    @Override
     public boolean moverPeca(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino) {
-        // Verifica se a casa de origem e a casa de destino estão dentro dos limites
+        // Verifica se a casa de origem está dentro dos limites
         if (linhaOrigem < 0 || linhaOrigem >= tabuleiro.length || colunaOrigem < 0 || colunaOrigem >= tabuleiro[0].length) {
             System.out.println("Casa de origem inválida.");
             return false; // Origem inválida
         }
+
+        // Verifica se a casa de destino está dentro dos limites
         if (linhaDestino < 0 || linhaDestino >= tabuleiro.length || colunaDestino < 0 || colunaDestino >= tabuleiro[0].length) {
             System.out.println("Casa de destino inválida.");
             return false; // Destino inválido
         }
 
-        // Verifica se o movimento é permitido e chama o tabuleiro real para mover a peça
-        boolean resultado = tabuleiroReal.moverPeca(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
-        if (resultado) {
-            System.out.println("Movimento realizado com sucesso.");
-        } else {
-            System.out.println("Movimento inválido.");
+        Casa casaOrigem = tabuleiro[linhaOrigem][colunaOrigem];
+        Casa casaDestino = tabuleiro[linhaDestino][colunaDestino];
+
+        // Verifica se a casa de origem tem uma peça
+        if (casaOrigem.getPeca() == null) {
+            System.out.println("Não há peça na casa de origem.");
+            return false; // Não há peça para mover
         }
-        return resultado;
+
+        // Verifica se a casa de destino está vazia
+        if (!casaDestino.isVazia()) {
+            System.out.println("A casa de destino já está ocupada.");
+            return false; // Destino ocupado
+        }
+
+        // Se todas as verificações forem bem-sucedidas, move a peça usando o TabuleiroReal
+        tabuleiroReal.moverPeca(linhaOrigem, colunaOrigem, linhaDestino, colunaDestino);
+        System.out.println("Movimento realizado com sucesso.");
+        return true; // Movimento bem-sucedido
+    }
+
+    @Override
+    public Casa[][] getCasas() {
+        return tabuleiroReal.getCasas();
     }
 }
+
