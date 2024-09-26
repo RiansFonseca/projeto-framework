@@ -2,16 +2,23 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import proxy.TabuleiroProxy;
 
 // Jogo
 public class Jogo {
     private List<Peca> pecas = new ArrayList<>();
     private TabuleiroProxy tabuleiro; // Usando a interface Tabuleiro
-    private String regras;
+    private List<String> regras;
 
-    public void setPecas(List<Peca> pecas) { this.pecas = pecas; }
-    public void setRegras(String regras) { this.regras = regras; }
+    public void setPecas(List<Peca> pecas) {
+        this.pecas = pecas;
+    }
+
+    public void setRegras(List<String> regras) {
+        this.regras = regras;
+    }
 
     public TabuleiroProxy getTabuleiro() {
         return tabuleiro;
@@ -23,7 +30,12 @@ public class Jogo {
 
     @Override
     public String toString() {
-        return "Jogo [pecas=" + pecas + ", regras=" + regras + ", tabuleiro=" + tabuleiro + "]";
+        String pecasString = String.join("\n-> ", pecas.stream().map(Peca::toString).toArray(String[]::new));
+        String regrasString = String.join("-> ", regras);
+        regrasString = "-> " + regrasString; // Adiciona o divisor no início
+        return "\n=====================PECAS===================== \n-> " + pecasString
+                + "\n=====================REGRAS===================== \n" + String.join("-> ", regras)
+                + "\n====================TABULEIRO==================== \n" + tabuleiro
+                + "\n=================================================";
     }
 }
-

@@ -5,13 +5,12 @@ import model.Peca;
 // Concrete Decorator - AdornosVermelhosDecorator
 public class AdornosVermelhosDecorator extends PecaDecorator {
 
-    public AdornosVermelhosDecorator(Peca peca) {
+    public AdornosVermelhosDecorator(String peca) {
         super(peca);
     }
 
     @Override
-    public String toString() {
-        return super.toString() + " com adornos vermelhos";
+    public String renderiza() {
+        return super.renderiza() + " com adornos vermelhos";
     }
 }
-

@@ -4,15 +4,15 @@ import model.Peca;
 
 // Decorator
 public abstract class PecaDecorator extends Peca {
-    protected Peca pecaDecorada;
+    protected String pecaDecorada;
 
-    public PecaDecorator(Peca peca) {
-        super(peca.toString()); // Chama o construtor da Peca
+    public PecaDecorator(String peca) {
+        super(peca);
         this.pecaDecorada = peca;
     }
 
     @Override
-    public String toString() {
+    public String renderiza() {
         return pecaDecorada.toString();
     }
 }

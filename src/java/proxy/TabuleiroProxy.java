@@ -56,4 +56,11 @@ public class TabuleiroProxy implements Tabuleiro {
     public Casa[][] getCasas() {
         return tabuleiroReal.getCasas();
     }
+
+    @Override
+    public String toString() {
+        int tamanho = tabuleiro.length; // Obtém o tamanho do tabuleiro (N)
+        return "TABULEIRO DE " + tamanho + "x" + tamanho;
+    }
+
 }

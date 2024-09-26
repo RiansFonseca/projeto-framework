@@ -4,13 +4,13 @@ import model.Peca;
 
 // Concrete Decorator - BrilhoVerdeDecorator
 public class MovimentoComBrilhoVerdeDecorator extends PecaDecorator {
-    
-    public MovimentoComBrilhoVerdeDecorator(Peca peca) {
+
+    public MovimentoComBrilhoVerdeDecorator(String peca) {
         super(peca);
     }
 
     @Override
-    public String toString() {
-        return super.toString() + " com brilho verde no movimento";
+    public String renderiza() {
+        return super.renderiza() + " com brilho verde no movimento";
     }
 }

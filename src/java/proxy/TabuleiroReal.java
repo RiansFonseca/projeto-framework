@@ -2,8 +2,6 @@ package proxy;
 
 import model.Casa;
 
-import model.Casa;
-
 // TabuleiroReal.java
 public class TabuleiroReal implements Tabuleiro {
     private Casa[][] tabuleiro;
