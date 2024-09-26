@@ -1,4 +1,4 @@
-# Padrão de Projeto: Builder
+# Padrão de Projeto: Decorator
 
 ## Intenção
 
@@ -67,3 +67,39 @@ A estrutura do padrão Proxy é composta pelos seguintes elementos:
 - **TabuleiroProxy (Proxy)**: Implementa a interface **Tabuleiro** e age como intermediário entre o jogo e o **TabuleiroReal**. Ele realiza verificações, como verificar se a casa de origem tem uma peça ou se a casa de destino está ocupada, antes de delegar a operação ao **TabuleiroReal**.
 
 - **Jogo**: O contexto em que o Proxy é utilizado para gerenciar o tabuleiro. Ao invés de interagir diretamente com o **TabuleiroReal**, o **Jogo** interage com o **TabuleiroProxy**, que se encarrega de fazer as validações necessárias.
+
+
+# Padrão de Projeto: Facade
+
+## Intenção
+
+O padrão Facade fornece uma interface simplificada para um conjunto de interfaces em um subsistema, tornando o subsistema mais fácil de usar. O objetivo é desacoplar o cliente do sistema complexo, fornecendo uma interface única que reúne funcionalidades e reduz a quantidade de chamadas diretas ao sistema. No contexto de um framework para jogos de tabuleiro, o padrão Facade será utilizado para gerenciar a criação e o término de jogos, como Xadrez e Damas, encapsulando a lógica necessária em uma única classe, permitindo que o cliente interaja de forma simples e direta.
+
+## Estrutura do Padrão
+
+A estrutura do padrão Facade é composta pelos seguintes elementos:
+
+- **Facade**: Classe que fornece uma interface simplificada para o cliente, orquestrando as chamadas para as fábricas e outras classes necessárias.
+- **Subsistemas**: Conjunto de classes que realizam a lógica do sistema, que o Facade encapsula.
+
+## Exemplo em Código
+
+- **Classe JogoFacade**
+@import "src\java\facade\JogoFacade.java"
+
+- **Classe DamasFactory**
+@import "src\java\factory\JogoDamasFactory.java"
+
+- **Classe XadrezFactory**
+@import "src\java\factory\JogoXadrezFactory.java"
+
+- **Classe Cliente**
+@import "src\java\cliente\Cliente.java"
+
+## Participantes
+
+- **JogoFacade**: Classe que fornece métodos para iniciar e terminar partidas de Xadrez e Damas, encapsulando a lógica necessária para interagir com as fábricas e o logger.
+- **JogoLogger**: Classe responsável por registrar eventos do jogo, como o início e o término de partidas.
+- **JogoDamasFactory**: Fábrica responsável por criar jogos de Damas, delegando a criação a um construtor específico.
+- **JogoXadrezFactory**: Fábrica responsável por criar jogos de Xadrez, delegando a criação a um construtor específico.
+- **Cliente**: Classe que utiliza o Facade para iniciar um jogo e controlar o tempo de partida, sem precisar interagir diretamente com as fábricas ou a lógica do jogo.
