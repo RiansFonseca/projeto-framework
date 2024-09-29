@@ -22,15 +22,12 @@ public class JogoDamasBuilder implements JogoBuilder {
         List<Peca> pecas = new ArrayList<>();
 
         // Instanciando as peças apenas com nome
-        Peca pecaBranca = new Peca("Peca Branca");
-        Peca pecaPreta = new Peca("Peca Preta");
+        Peca pecaBranca = new Peca("Peca", "Branca");
+        Peca pecaPreta = new Peca("Peca", "Preta");
 
         // Aplicando o decorator para adicionar adornos vermelhos
-        Peca pecaBrancaComAdornos = new AdornosVermelhosDecorator(pecaBranca.renderiza());
-        Peca pecaPretaComAdornos = new AdornosVermelhosDecorator(pecaPreta.renderiza());
-
-        System.out.println(pecaBrancaComAdornos.renderiza());
-        System.out.println(pecaPretaComAdornos.renderiza());
+        Peca pecaBrancaComAdornos = new AdornosVermelhosDecorator(pecaBranca.toString());
+        Peca pecaPretaComAdornos = new AdornosVermelhosDecorator(pecaPreta.toString());
 
         // Adicionando as peças decoradas à lista
         pecas.add(pecaBrancaComAdornos);
@@ -50,7 +47,7 @@ public class JogoDamasBuilder implements JogoBuilder {
         }
 
         // Instancia o TabuleiroProxy com o tabuleiro criado
-        TabuleiroProxy tabuleiroProxy = new TabuleiroProxy(tabuleiroCasas);
+        TabuleiroProxy tabuleiroProxy = new TabuleiroProxy(tabuleiroCasas, "Preto e Branco");
 
         // Define o tabuleiro no jogo como o proxy
         jogo.setTabuleiro(tabuleiroProxy); // Agora estamos passando um Tabuleiro

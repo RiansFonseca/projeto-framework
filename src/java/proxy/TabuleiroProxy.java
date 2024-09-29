@@ -9,9 +9,9 @@ public class TabuleiroProxy implements Tabuleiro {
     private TabuleiroReal tabuleiroReal;
     private Casa[][] tabuleiro;
 
-    public TabuleiroProxy(Casa[][] tabuleiro) {
+    public TabuleiroProxy(Casa[][] tabuleiro, String cor) {
         this.tabuleiro = tabuleiro;
-        this.tabuleiroReal = new TabuleiroReal(tabuleiro);
+        this.tabuleiroReal = new TabuleiroReal(tabuleiro, cor);
     }
 
     @Override
@@ -61,6 +61,11 @@ public class TabuleiroProxy implements Tabuleiro {
     public String toString() {
         int tamanho = tabuleiro.length; // Obtém o tamanho do tabuleiro (N)
         return "TABULEIRO DE " + tamanho + "x" + tamanho;
+    }
+
+    @Override
+    public void setCorTabuleiro(String novaCor) {
+        tabuleiroReal.setCorTabuleiro(novaCor);
     }
 
 }

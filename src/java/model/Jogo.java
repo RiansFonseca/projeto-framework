@@ -31,10 +31,10 @@ public class Jogo {
     @Override
     public String toString() {
         String pecasString = String.join("\n-> ", pecas.stream().map(Peca::toString).toArray(String[]::new));
-        String regrasString = String.join("-> ", regras);
-        regrasString = "-> " + regrasString; // Adiciona o divisor no início
+        String regrasString = String.join("", regras);
+
         return "\n=====================PECAS===================== \n-> " + pecasString
-                + "\n=====================REGRAS===================== \n" + String.join("-> ", regras)
+                + "\n=====================REGRAS===================== \n" + regrasString
                 + "\n====================TABULEIRO==================== \n" + tabuleiro
                 + "\n=================================================";
     }

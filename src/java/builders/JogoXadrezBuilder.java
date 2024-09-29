@@ -21,10 +21,10 @@ public class JogoXadrezBuilder implements JogoBuilder {
         List<Peca> pecas = new ArrayList<>();
 
         // Criando peças básicas
-        Peca reiBranco = new Peca("Rei Branco");
-        Peca rainhaBranca = new Peca("Rainha Branca");
-        Peca torreBranca = new Peca("Torre Branca");
-        Peca peaoPreto = new Peca("Peão Preto");
+        Peca reiBranco = new Peca("Rei", "Branco");
+        Peca rainhaBranca = new Peca("Rainha", "Branca");
+        Peca torreBranca = new Peca("Torre", "Preta");
+        Peca peaoPreto = new Peca("Peão", "Preto");
 
         // Adicionando as peças à lista
         pecas.add(reiBranco);
@@ -44,7 +44,7 @@ public class JogoXadrezBuilder implements JogoBuilder {
         }
 
         // Instancia o TabuleiroProxy com o tabuleiro criado
-        TabuleiroProxy tabuleiroProxy = new TabuleiroProxy(tabuleiroCasas);
+        TabuleiroProxy tabuleiroProxy = new TabuleiroProxy(tabuleiroCasas, "Preto e Branco");
 
         // Define o tabuleiro no jogo como o proxy
         jogo.setTabuleiro(tabuleiroProxy); // Agora estamos passando um Tabuleiro

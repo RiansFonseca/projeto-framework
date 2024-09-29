@@ -3,17 +3,19 @@ package model;
 // Peça
 public class Peca {
     private String nome;
+    private String corPeca;
 
-    public Peca(String nome) {
+    public Peca(String nome, String corPeca) {
         this.nome = nome;
+        this.corPeca = corPeca;
     }
 
-    public String renderiza() {
-        return nome;
+    public Peca renderiza() {
+        return this;
     }
 
     @Override
     public String toString() {
-        return "Peça" + nome;
+        return "Peça ->" + nome + " " + corPeca;
     }
 }

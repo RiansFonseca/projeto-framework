@@ -12,7 +12,7 @@ public class Cliente {
         JogoFacade jogoFacade = new JogoFacade();
 
         // Inicia uma partida de Xadrez
-        jogoFacade.iniciarPartidaXadrez();
+        jogoFacade.iniciarPartidaDamas();
 
         // Cria uma thread para controlar o tempo de 30 segundos (30.000 ms)
         new Thread(() -> {

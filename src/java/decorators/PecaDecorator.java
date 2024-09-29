@@ -7,12 +7,7 @@ public abstract class PecaDecorator extends Peca {
     protected String pecaDecorada;
 
     public PecaDecorator(String peca) {
-        super(peca);
+        super(peca, null);
         this.pecaDecorada = peca;
-    }
-
-    @Override
-    public String renderiza() {
-        return pecaDecorada.toString();
     }
 }

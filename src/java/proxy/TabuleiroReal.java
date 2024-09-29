@@ -5,9 +5,11 @@ import model.Casa;
 // TabuleiroReal.java
 public class TabuleiroReal implements Tabuleiro {
     private Casa[][] tabuleiro;
+    private String corTabuleiro;
 
-    public TabuleiroReal(Casa[][] tabuleiro) {
+    public TabuleiroReal(Casa[][] tabuleiro, String corTabuleiro) {
         this.tabuleiro = tabuleiro;
+        this.corTabuleiro = corTabuleiro;
     }
 
     @Override
@@ -24,5 +26,10 @@ public class TabuleiroReal implements Tabuleiro {
     @Override
     public Casa[][] getCasas() {
         return tabuleiro;
+    }
+
+    @Override
+    public void setCorTabuleiro(String novaCor) {
+        this.corTabuleiro = novaCor;
     }
 }

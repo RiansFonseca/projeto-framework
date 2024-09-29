@@ -10,7 +10,7 @@ public class AdornosVermelhosDecorator extends PecaDecorator {
     }
 
     @Override
-    public String renderiza() {
-        return super.renderiza() + " com adornos vermelhos";
+    public String toString() {
+        return super.toString() + "Com Adornos Vermelhos";
     }
 }
