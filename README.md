@@ -122,150 +122,24 @@ A estrutura do padrão Adapter é composta pelos seguintes elementos:
 ## Exemplo em Código
 
 **Target Interface (Interface Alvo)**
+@import "src\java\adapter\JogoAdapter.java"
 
-```java
-public interface JogoAdapter {
-    String convert(); // Método para converter o objeto Jogo para outro formato
-}
-```
-```java
 **Adapter - Implementa a interface JogoAdapter e adapta a classe Jogo para JSON**
-public class JogoJsonAdapter implements JogoAdapter {
-    private Jogo jogo;
-
-    public JogoJsonAdapter(Jogo jogo) {
-        this.jogo = jogo;
-    }
-
-    @Override
-    public String convert() {
-        GsonBuilder gsonBuilder = new GsonBuilder();
-        gsonBuilder.setPrettyPrinting();
-        Gson gson = gsonBuilder.create();
-
-        return gson.toJson(jogo.toString());
-    }
-}
-```
-
+@import "src\java\adapter\JogoJsonAdapter.java"
 
 **Adaptee - Classe que representa o Jogo com peças, tabuleiro e regras**
-```java
-public class Jogo {
-    private List<Peca> pecas; // Lista de peças do jogo
-    private TabuleiroProxy tabuleiro; // Usando a interface Tabuleiro
-    private List<String> regras; // Regras do jogo
-
-    // **Construtor**
-    public Jogo() {
-        this.pecas = new ArrayList<>(); // Inicializa a lista de peças
-        this.regras = new ArrayList<>(); // Inicializa a lista de regras
-    }
-
-    // **Métodos de acesso (Getters e Setters)**
-    public List<Peca> getPecas() {
-        return pecas;
-    }
-
-    public void setPecas(List<Peca> pecas) {
-        this.pecas = pecas;
-    }
-
-    public TabuleiroProxy getTabuleiro() {
-        return tabuleiro;
-    }
-
-    public void setTabuleiro(TabuleiroProxy tabuleiro) {
-        this.tabuleiro = tabuleiro;
-    }
-
-    public List<String> getRegras() {
-        return regras;
-    }
-
-    public void setRegras(List<String> regras) {
-        this.regras = regras;
-    }
-
-    // **Método para adicionar uma peça**
-    public void adicionarPeca(Peca peca) {
-        this.pecas.add(peca);
-    }
-
-    // **Método para adicionar uma regra**
-    public void adicionarRegra(String regra) {
-        this.regras.add(regra);
-    }
-
-    @Override
-    public String toString() {
-        // Formatação das peças
-        String pecasString = String.join(" ", pecas.stream().map(Peca::toString).toArray(String[]::new));
-        // Formatação das regras
-        String regrasString = String.join("\n ", regras);
-
-        return "\nPECAS: \n " + pecasString
-                + "\nREGRAS: \n " + regrasString
-                + "\nTABULEIRO: \n " + tabuleiro;
-    }
-}
-```
+@import "src\java\model\Jogo.java"
 
 **Client**
-```java
-public class JogoFacade {
-    private JogoXadrezFactory xadrezFactory;
-    private JogoDamasFactory damasFactory;
-    private JogoLogger jogoLogger;
-    private Jogo jogo; // Mantenha a referência ao objeto Jogo
+@import "src\java\facade\JogoFacade.java"
 
-    public JogoFacade() {
-        this.xadrezFactory = new JogoXadrezFactory();
-        this.damasFactory = new JogoDamasFactory();
-        this.jogoLogger = new JogoLogger();
-        this.jogo = null; // Inicialize o jogo como nulo
-    }
 
-    // **Método para iniciar uma partida de Xadrez**
-    public void iniciarPartidaXadrez() {
-        this.jogo = xadrezFactory.criarJogo(); // Crie o jogo e mantenha a referência
-        jogoLogger.getJogoString(jogo);
-        jogoLogger.iniciarPartidaXadrez();
-    }
+### Participantes
 
-    // **Método para iniciar uma partida de Damas**
-    public void iniciarPartidaDamas() {
-        this.jogo = damasFactory.criarJogo(); // Crie o jogo e mantenha a referência
-        jogoLogger.getJogoString(jogo);
-        jogoLogger.iniciarPartidaDamas();
-    }
+**JogoAdapter**: Interface que define o contrato para a conversão do objeto Jogo em formato JSON.
 
-    // **Método para terminar a partida de Xadrez**
-    public void terminarPartidaXadrez() {
-        jogoLogger.terminarPartidaXadrez();
-    }
+**JogoJsonAdapter**: Classe adaptadora que implementa a interface `JogoAdapter`. Esta classe recebe um objeto do tipo `Jogo` e converte suas informações para o formato JSON.
 
-    // **Método para terminar a partida de Damas**
-    public void terminarPartidaDamas() {
-        jogoLogger.terminarPartidaDamas();
-    }
+**Jogo**: Classe que representa o jogo, contendo uma lista de peças, regras e métodos para manipular esses elementos.
 
-    // **Método para obter o jogo em formato JSON**
-    public String obterJogo() {
-        JogoJsonAdapter adapter = new JogoJsonAdapter(jogo);
-        return adapter.convert();
-    }
-}
-```
-
-## Participantes
-
-**JogoFacade**: Classe que fornece métodos para iniciar e terminar partidas de Xadrez e Damas, encapsulando a lógica necessária para interagir com as fábricas e o logger.
-
-**JogoLogger**: Classe responsável por registrar eventos do jogo, como o início e o término de partidas.
-
-**JogoDamasFactory**: Fábrica responsável por criar jogos de Damas, delegando a criação a um construtor específico.
-
-**JogoXadrezFactory**: Fábrica responsável por criar jogos de Xadrez, delegando a criação a um construtor específico.
-
-**Cliente**: Classe que utiliza o Facade para iniciar um jogo e controlar o tempo de partida, sem precisar interagir diretamente com as fábricas ou a lógica do jogo.
+**JogoFacade**: Classe cliente que utiliza o `JogoJsonAdapter` para obter a representação do jogo em formato JSON, que normalmente se obteria em formato de texto comum, através do toString da classe Jogo.
