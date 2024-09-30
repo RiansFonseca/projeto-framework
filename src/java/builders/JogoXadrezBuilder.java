@@ -2,6 +2,7 @@ package builders;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import model.Casa;
 import model.Jogo;
 import model.Peca;

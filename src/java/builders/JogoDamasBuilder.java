@@ -3,6 +3,7 @@ package builders;
 import decorators.AdornosVermelhosDecorator;
 import java.util.ArrayList;
 import java.util.List;
+
 import model.Casa;
 import model.Jogo;
 import model.Peca;
@@ -21,9 +22,15 @@ public class JogoDamasBuilder implements JogoBuilder {
         List<Peca> pecas = new ArrayList<>();
     
         // Instanciando as peças apenas com nome
+<<<<<<< HEAD
         Peca pecaBranca = new Peca("Peca Branca");
         Peca pecaPreta = new Peca("Peca Preta");
     
+=======
+        Peca pecaBranca = new Peca("Peão", "Branco");
+        Peca pecaPreta = new Peca("Peão", "Preto");
+
+>>>>>>> 9e20a14 (Adapter)
         // Aplicando o decorator para adicionar adornos vermelhos
         Peca pecaBrancaComAdornos = new AdornosVermelhosDecorator(pecaBranca);
         Peca pecaPretaComAdornos = new AdornosVermelhosDecorator(pecaPreta);

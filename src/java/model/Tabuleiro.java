@@ -1,6 +1,6 @@
 package model;
 
 // Subject
-interface Tabuleiro {
+public interface Tabuleiro {
     boolean moverPeca(String origem, String destino);
 }
