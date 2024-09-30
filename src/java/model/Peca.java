@@ -3,6 +3,12 @@ package model;
 // Peça
 public class Peca {
     private String nome;
+    private String corPeca;
+
+    public Peca(String nome, String corPeca) {
+        this.nome = nome;
+        this.corPeca = corPeca;
+    }
 
 <<<<<<< HEAD
     public Peca(String nome) { this.nome = nome; }

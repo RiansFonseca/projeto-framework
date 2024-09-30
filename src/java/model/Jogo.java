@@ -2,37 +2,12 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
-=======
 
->>>>>>> 9e20a14 (Adapter)
 import proxy.TabuleiroProxy;
 
 //Classe Jogo
+//Classe Jogo
 public class Jogo {
-<<<<<<< HEAD
-    private List<Peca> pecas = new ArrayList<>();
-    private TabuleiroProxy tabuleiro; // Usando a interface Tabuleiro
-    private String regras;
-
-    public void setPecas(List<Peca> pecas) { this.pecas = pecas; }
-    public void setRegras(String regras) { this.regras = regras; }
-
-    public TabuleiroProxy getTabuleiro() {
-        return tabuleiro;
-    }
-
-    public void setTabuleiro(TabuleiroProxy tabuleiro) { // Altera o parâmetro para Tabuleiro
-        this.tabuleiro = tabuleiro;
-    }
-
-    @Override
-    public String toString() {
-        return "Jogo [pecas=" + pecas + ", regras=" + regras + ", tabuleiro=" + tabuleiro + "]";
-    }
-}
-
-=======
 	 private List<Peca> pecas;  // Lista de peças do jogo
 	 private TabuleiroProxy tabuleiro; // Usando a interface Tabuleiro
 	 private List<String> regras;  // Regras do jogo
@@ -90,4 +65,3 @@ public class Jogo {
 	             + "\nTABULEIRO: \n " + tabuleiro;
 	 }
 }
->>>>>>> 9e20a14 (Adapter)
