@@ -35,6 +35,6 @@ public class Cliente {
 		}
 
 		// Após o tempo esgotado, imprime o estado do jogo em JSON
-		System.out.println(jogoFacade.obterJogo());
+		System.out.println(jogoFacade.getJogoJson());
 	}
 }

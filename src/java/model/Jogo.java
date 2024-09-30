@@ -56,7 +56,7 @@ public class Jogo {
 	 @Override
 	 public String toString() {
 	     // Formatação das peças
-	     String pecasString = String.join(" ", pecas.stream().map(Peca::toString).toArray(String[]::new));
+	     String pecasString = String.join("\n", pecas.stream().map(Peca::toString).toArray(String[]::new));
 	     // Formatação das regras
 	     String regrasString = String.join("\n ", regras);
 	     
