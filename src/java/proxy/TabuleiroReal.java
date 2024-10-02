@@ -32,4 +32,10 @@ public class TabuleiroReal implements Tabuleiro {
     public void setCorTabuleiro(String novaCor) {
         this.corTabuleiro = novaCor;
     }
+    
+    @Override
+    public String getTamanho() {
+        int tamanho = tabuleiro.length; // Obtém o tamanho do tabuleiro
+        return tamanho + "x" + tamanho; // Retorna no formato "NxN"
+    }
 }

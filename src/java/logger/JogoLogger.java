@@ -1,34 +1,31 @@
 package logger;
 
-import model.Jogo;
+import java.util.ArrayList;
+import java.util.List;
 
-public class JogoLogger {
+import facade.JogoFacade;
+import observer.Observer;
 
-    public JogoLogger() {
+public class JogoLogger extends Observer {
+    private List<String> logs;
+
+    public JogoLogger(JogoFacade jogoFacade) {
+        this.logs = new ArrayList<>();
+        jogoFacade.adicionarObservadores(this);
     }
 
-    // Método para iniciar uma partida de Xadrez
-    public void iniciarPartidaXadrez() {
-        System.out.println("LOG: Iniciando partida de Xadrez.");
+    @Override
+    public void atualizar(String descricao, Object obj ) {
+        String log = "LOG: " + descricao + " "+ obj;
+        logs.add(log);
+        System.out.println(log);
     }
 
-    // Método para iniciar uma partida de Damas
-    public void iniciarPartidaDamas() {
-        System.out.println("LOG: Iniciando partida de Damas.");
+    // Método para mostrar todos os logs
+    public void mostrarLogs() {
+        System.out.println("LOGS DO JOGO:");
+        for (String log : logs) {
+            System.out.println(log);
+        }
     }
-
-    // Método para terminar a partida de Xadrez
-    public void terminarPartidaXadrez() {
-        System.out.println("LOG: Terminando partida de Xadrez.");
-    }
-
-    // Método para terminar a partida de Damas
-    public void terminarPartidaDamas() {
-        System.out.println("LOG: Terminando partida de Damas.");
-    }
-
-    public void getJogoString(Jogo jogo) {
-        System.out.println(jogo);
-    }
-
 }

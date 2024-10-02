@@ -1,6 +1,7 @@
 package client;
 
 import facade.JogoFacade;
+import logger.JogoLogger;
 
 public class Cliente {
 	private static boolean tempoEsgotado = false;
@@ -9,16 +10,15 @@ public class Cliente {
 		int i = 0;
 		// Instancia o Facade
 		JogoFacade jogoFacade = new JogoFacade();
-
-		// Inicia uma partida de Damas
-		jogoFacade.iniciarPartidaDamas();
+		JogoLogger jogoLogger = new JogoLogger(jogoFacade);
+		jogoFacade.iniciarJogoXadrez();
 
 		// Cria uma thread para controlar o tempo de 30 segundos (30.000 ms)
 		new Thread(() -> {
 			try {
 				Thread.sleep(5000);
 				tempoEsgotado = true;
-				jogoFacade.terminarPartidaXadrez();
+				jogoFacade.terminarJogoXadrez();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -35,6 +35,6 @@ public class Cliente {
 		}
 
 		// Após o tempo esgotado, imprime o estado do jogo em JSON
-		System.out.println(jogoFacade.getJogoJson());
+		jogoFacade.getJogoJson();
 	}
 }

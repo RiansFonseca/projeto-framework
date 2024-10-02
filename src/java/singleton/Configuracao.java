@@ -2,6 +2,8 @@ package singleton;
 
 import java.util.List;
 
+import decorators.PecaDecorator;
+import iterator.PecaIterator;
 import model.Peca;
 import proxy.TabuleiroProxy;
 
@@ -53,8 +55,29 @@ public class Configuracao {
         return corPecas;
     }
 
+    // Método para trocar cor das peças
     public void setCorPecas(String corPecas, List<Peca> pecas) {
         this.corPecas = corPecas;
-        // ITERAÇÃO PARA TROCAR A COR DAS PECAS DA LISTA PASSADA POR PARAMETRO
+
+        // Cria um iterador para a lista de peças
+        PecaIterator iterator = new PecaIterator(pecas);
+
+        // Itera sobre as peças e altera a cor
+        while (iterator.hasNext()) {
+            Peca peca = iterator.next();
+            peca.setCor(corPecas);  // Define a cor da peça
+        }
+    }
+
+   // Método para adicionar decorators às peças
+    public void adicionarPecasDecorator(List<Peca> pecas, PecaDecorator decorator) {
+        
+        PecaIterator iterator = new PecaIterator(pecas);
+
+        while (iterator.hasNext()) {
+            Peca peca = iterator.next();
+            Peca pecaDecorada = decorator;  // Aplica o decorator à peça
+            pecas.set(pecas.indexOf(peca), pecaDecorada);  // Substitui a peça original pela peça decorada
+        }
     }
 }

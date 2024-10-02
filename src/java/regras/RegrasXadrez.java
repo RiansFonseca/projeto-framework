@@ -7,7 +7,7 @@ public final class RegrasXadrez {
     public static List<String> obterRegras() {
         List<String> regrasXadrez = new ArrayList<>();
 
-        regrasXadrez.add("\n1. O jogo é jogado entre dois jogadores, um com peças brancas e outro com peças pretas.\n");
+        regrasXadrez.add("1. O jogo é jogado entre dois jogadores, um com peças brancas e outro com peças pretas.\n");
         regrasXadrez.add(
                 "2. O objetivo é dar xeque-mate ao rei do oponente, o que significa que ele não pode escapar do ataque.\n");
         regrasXadrez.add(

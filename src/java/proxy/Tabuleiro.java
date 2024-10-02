@@ -2,7 +2,6 @@ package proxy;
 
 import model.Casa;
 
-// Tabuleiro.java
 public interface Tabuleiro {
     boolean moverPeca(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino);
 
@@ -10,4 +9,5 @@ public interface Tabuleiro {
 
     void setCorTabuleiro(String novaCor);
 
+    String getTamanho(); // Adicionando o método getTamanho
 }

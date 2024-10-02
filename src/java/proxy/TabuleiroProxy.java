@@ -2,8 +2,6 @@ package proxy;
 
 import model.Casa;
 
-import model.Casa;
-
 // TabuleiroProxy.java
 public class TabuleiroProxy implements Tabuleiro {
     private TabuleiroReal tabuleiroReal;
@@ -66,6 +64,12 @@ public class TabuleiroProxy implements Tabuleiro {
     @Override
     public void setCorTabuleiro(String novaCor) {
         tabuleiroReal.setCorTabuleiro(novaCor);
+    }
+
+    @Override
+    public String getTamanho() {
+        int tamanho = tabuleiro.length;
+        return tamanho + "x" + tamanho;
     }
 
 }

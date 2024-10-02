@@ -1,13 +1,13 @@
 package builders;
 
-import decorators.AdornosVermelhosDecorator;
 import java.util.ArrayList;
 import java.util.List;
-
 
 import model.Casa;
 import model.Jogo;
 import model.Peca;
+import model.PecaBranca;
+import model.PecaPreta;
 import proxy.TabuleiroProxy;
 import regras.RegrasDamas;
 
@@ -21,22 +21,36 @@ public class JogoDamasBuilder implements JogoBuilder {
 
     @Override
     public void buildPecas() {
-        List<Peca> pecas = new ArrayList<>();
+        List<Peca> pecasBrancas = new ArrayList<>();
+        List<Peca> pecasPretas = new ArrayList<>();
+    
+        // Criando uma peça base para clonagem
+        PecaBranca peaoBranco = new PecaBranca("Peão");
+        PecaPreta peaoPreto = new PecaPreta("Peão");
 
-        // Instanciando as peças apenas com nome
-        Peca pecaBranca = new Peca("Peão", "Branco");
-        Peca pecaPreta = new Peca("Peão", "Preto");
-
-        // Aplicando o decorator para adicionar adornos vermelhos
-        Peca pecaBrancaComAdornos = new AdornosVermelhosDecorator(pecaBranca.toString());
-        Peca pecaPretaComAdornos = new AdornosVermelhosDecorator(pecaPreta.toString());
-
-        // Adicionando as peças decoradas à lista
-        pecas.add(pecaBrancaComAdornos);
-        pecas.add(pecaPretaComAdornos);
-
+        pecasBrancas.add(peaoBranco);
+        pecasPretas.add(peaoPreto);
+    
+        // Clonando e adicionando 12 peças brancas
+        for (int i = 0; i < 11; i++) {
+            try {
+                pecasBrancas.add((PecaBranca) peaoBranco.clone());
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
+        }
+    
+        // Clonando e adicionando 12 peças pretas
+        for (int i = 0; i < 11; i++) {
+            try {
+                pecasPretas.add((PecaPreta) peaoPreto.clone());
+            } catch (CloneNotSupportedException e) {
+                e.printStackTrace();
+            }
+        }
+    
         // Definindo as peças no jogo
-        jogo.setPecas(pecas);
+        jogo.setPecas(pecasBrancas, pecasPretas);
     }
 
     @Override
